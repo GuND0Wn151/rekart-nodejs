@@ -9,7 +9,14 @@ const image_selector =
 const size_selector = "div.swatch-option.text";
 const browserP = puppeteer.launch({
    headless: true,
-   args: ["--no-sandbox", "--disable-setuid-sandbox"],
+   args: [
+         '--no-sandbox',
+         '--disable-setuid-sandbox',
+         '--disable-gpu',
+         '--disable-dev-shm-usage',
+         '--proxy-server="direct://"',
+         '--proxy-bypass-list=*'
+    ]
 });
 
 wrangler_api.post("/Wrangler",  (req, res) => {

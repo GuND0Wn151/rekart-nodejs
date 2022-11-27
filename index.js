@@ -5,7 +5,7 @@ const router = require("./Brands/Router")
 const dotenv  = require("dotenv")
 dotenv.config()
 const app = express()
-
+require('events').EventEmitter.prototype._maxListeners = 30;
 app.use(cors())
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: false }));
