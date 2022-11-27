@@ -16,7 +16,7 @@ const browserP = puppeteer.launch({
 });
 
 
-RareRabbit_api.post("/RareRabbit", async (req, res) => {
+RareRabbit_api.post("/RareRabbit",  (req, res) => {
    console.log(req.body.url);
    let page;
    (async () => {

@@ -12,7 +12,7 @@ const browserP = puppeteer.launch({
    headless: true,
    args: ["--no-sandbox", "--disable-setuid-sandbox"],
 });
-Calvin_api.post("/Calvin", async (req, res) => {
+Calvin_api.post("/Calvin",  (req, res) => {
    console.log(req.body.url);
    let page;
    (async () => {

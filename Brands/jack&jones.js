@@ -12,7 +12,7 @@ const browserP = puppeteer.launch({
    headless: true,
    args: ["--no-sandbox", "--disable-setuid-sandbox"],
 });
-jack_jones_api.post("/Jack&Jones", async (req, res) => {
+jack_jones_api.post("/Jack&Jones",  (req, res) => {
    console.log(req.body.url);
    let page;
    (async () => {
