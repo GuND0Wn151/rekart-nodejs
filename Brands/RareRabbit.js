@@ -10,12 +10,18 @@ const price_selector = "span.money";
 const sizes_selector =
    "div.ProductForm__Variants > div:nth-child(1) > ul > li > label";
 const images_selector = "div > div > div > span > img";
+const browserP = puppeteer.launch({
+   headless: true,
+   args: ["--no-sandbox", "--disable-setuid-sandbox"],
+});
+
+
 RareRabbit_api.post("/RareRabbit", async (req, res) => {
-   const name = await puppeteer
-      .launch({ headless: true })
-      .then(async (browser) => {
+   console.log(req.body.url);
+   let page;
+   (async () => {
          var data = {};
-         let page = await browser.newPage();
+         page = await browserP.newPage();
          data = {};
          await page.goto(RareRabbit_link+req.body.url);
          await page.waitForSelector(href_selector);
@@ -34,9 +40,10 @@ RareRabbit_api.post("/RareRabbit", async (req, res) => {
          });
 
          data.name = await page.$eval(name_selector, (el) => el.textContent);
-         return data;
-      });
-   res.send(name);
+         res.send(data)
+      })().catch((err) => res.sendStatus(500))
+      .finally(() => page.close());
+
 });
 
 module.exports = RareRabbit_api;

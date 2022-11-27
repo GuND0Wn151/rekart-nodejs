@@ -33,12 +33,9 @@ Diesel_api.post("/Diesel", (req, res) => {
       const sizes = await page.$$eval(size_selector, (op3) => {
          return op3.map((op4) => op4.textContent.trim());
       });
-      var images = await page.$$eval(
-         "div > div.min-page-height > div.main-container > div > div > div > div > div > div > div > div > div > a > div > div > img:nth-child(2)",
-         (op5) => {
-            return op5.map((op6) => op6.getAttribute("src"));
-         }
-      );
+      var images = await page.$$eval(image_selector, (op5) => {
+         return op5.map((op6) => op6.getAttribute("src"));
+      });
       data.images = Array.from(new Set(images));
       data.size = Array.from(new Set(sizes));
       res.send(data);
