@@ -16,7 +16,7 @@ Calvin_api.post("/Calvin",  (req, res) => {
    console.log(req.body.url);
    let page;
    (async () => {
-      page = await browserP.newPage();
+      page = await (await browserP).newPage();
 
       await page.goto(Calvin_link + req.body.url);
       let newURL = await page.$eval(

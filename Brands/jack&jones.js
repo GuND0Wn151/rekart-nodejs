@@ -12,22 +12,24 @@ const browserP = puppeteer.launch({
    headless: true,
    args: ["--no-sandbox", "--disable-setuid-sandbox"],
 });
-jack_jones_api.post("/Jack&Jones",  (req, res) => {
+jack_jones_api.post("/Jack_Jones",  (req, res) => {
    console.log(req.body.url);
    let page;
    (async () => {
       var data = {};
-      let page = await browserP.newPage();
+      page = await (await browserP).newPage();
       console.log(jack_jones_link + req.body.url);
       await page.goto(jack_jones_link + req.body.url, {
          waitUntil: "domcontentloaded",
       });
+      await page.waitForSelector("html")
       var url = await page.$eval(href_selector, (el) =>
          el.getAttribute("href")
       );
-
+      console.log(url)
       await page.goto(url, { waitUntil: "domcontentloaded" });
-      data.title = await page.$eval(name_selector, (one) => one.textContent);
+      await page.waitForSelector("html")
+      data.name = await page.$eval(name_selector, (one) => one.textContent);
       data.price = await page.$eval(
          price_selector,
          (second) => second.textContent
@@ -39,9 +41,10 @@ jack_jones_api.post("/Jack&Jones",  (req, res) => {
          return five.map((six) => six.getAttribute("href").split(","));
       });
       data.size = Array.from(new Set(sizes));
-      return data;
+      console.log(data)
+      res.send(data);
    })()
-      .catch((err) => res.sendStatus(500))
+      .catch((err) => res.sendStatus(err.message))
       
 });
 

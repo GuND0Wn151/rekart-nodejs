@@ -17,7 +17,7 @@ Mark_spencer_api.post("/Markspencer",  (req, res) => {
    console.log(req.body.url);
    let page;
    (async () => {
-      page = await browserP.newPage();
+      page = await (await browserP).newPage();
       var data = {};
 
       await page.goto(url + req.body.url + "&lang=en_IN");

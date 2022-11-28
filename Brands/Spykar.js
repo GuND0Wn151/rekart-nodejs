@@ -15,11 +15,11 @@ Spykar_api.post("/Spykar", (req, res) => {
    let page;
    (async () => {
       var data = {};
-      page = await browserP.newPage();
+      page = await (await browserP).newPage();
       await page.goto(Spykar_link + req.body.url, {
          waitUntil: "domcontentloaded",
       });
-      //await page.waitForSelector("product-title")
+      await page.waitForSelector("html")
       data.name = await page.$eval(name_selector, (el) => el.textContent);
       data.price = await page.$eval(price_selector, (el) => el.textContent);
       data.size = await page.$$eval(size_selector, (txt) => {
@@ -32,7 +32,7 @@ Spykar_api.post("/Spykar", (req, res) => {
 
       res.send(data);
    })()
-      .catch((err) => res.sendStatus(500))
+      .catch((err) => res.sendStatus(err))
       
 });
 

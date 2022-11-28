@@ -19,7 +19,7 @@ const router = require("express").Router()
 
 router.post("/Wrangler",wrangler_api)
 router.post("/United",United_api)
-router.post("/Jack&Jones",jack_jones_api)
+router.post("/Jack_Jones",jack_jones_api)
 router.post("/Tommy",Tommy_api)
 router.post("/Levis",Levis_api)
 router.post("/Spykar",Spykar_api)

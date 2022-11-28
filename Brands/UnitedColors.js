@@ -14,7 +14,7 @@ United_api.post("/United",  (req, res) => {
    console.log(req.body.url);
    let page;
    (async () => {
-      page = await browserP.newPage();
+      page = await (await browserP).newPage();
       var data = {};
       await page.goto(United_link + req.body.url, {
          waitUntil: "domcontentloaded",

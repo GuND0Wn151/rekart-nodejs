@@ -12,10 +12,11 @@ const browserP = pupeteer.launch({
    headless: true,
    args: ["--no-sandbox", "--disable-setuid-sandbox"],
 });
+
 Gas_api.post("/Gas",  (req, res) => {
    let page;
    (async () => {
-      page = await browserP.newPage();
+      page = await (await browserP).newPage();
       var data = {};
       await page.goto(Gas_url + req.body.url);
       await page.waitForSelector(name_selector);
@@ -32,6 +33,7 @@ Gas_api.post("/Gas",  (req, res) => {
          return img.map((x) => x.getAttribute("src").replaceAll(" ", "%20"));
       });
       data.price = await page.$eval(price_selector, (el) => el.textContent);
+      console.log(data)
       res.send(data);
    })()
       .catch((err) => res.sendStatus(500))

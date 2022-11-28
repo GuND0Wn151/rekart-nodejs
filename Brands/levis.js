@@ -20,7 +20,7 @@ Levis_api.post("/Levis",  (req, res) => {
    let page;
    (async () => {
       var data = {};
-      page = await browserP.newPage();
+      page = await (await browserP).newPage();
       const url = Levis_link + req.body.url + "&lang=en_IN";
       await page.goto(url);
       await page.waitForSelector(name_selector);

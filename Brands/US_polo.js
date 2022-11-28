@@ -14,7 +14,7 @@ US_polo_api.post("/USpolo",  (req, res) => {
    console.log(req.body.url);
    let page;
    (async () => {
-      page = await browser.newPage();
+      page = await (await browserP).newPage();
 
       var data = {};
       await page.goto(US_polo_link + req.body.url);
