@@ -41,7 +41,7 @@ RareRabbit_api.post("/RareRabbit",  (req, res) => {
 
          data.name = await page.$eval(name_selector, (el) => el.textContent);
          res.send(data)
-      })().catch((err) => res.sendStatus(500))
+      })().catch((err) => res.send(err))
       
 
 });

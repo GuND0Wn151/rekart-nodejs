@@ -40,7 +40,7 @@ Diesel_api.post("/Diesel", (req, res) => {
       data.size = Array.from(new Set(sizes));
       res.send(data);
    })()
-      .catch((err) => res.sendStatus(500))
+      .catch((err) => res.send(err))
       
 });
 

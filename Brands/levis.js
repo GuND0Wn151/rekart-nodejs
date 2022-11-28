@@ -43,7 +43,7 @@ Levis_api.post("/Levis",  (req, res) => {
       data.price = price;
       res.send(data);
    })()
-      .catch((err) => res.sendStatus(500))
+      .catch((err) => res.send(err))
       
 });
 module.exports = Levis_api;

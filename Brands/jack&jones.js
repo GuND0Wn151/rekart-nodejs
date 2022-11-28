@@ -45,7 +45,7 @@ jack_jones_api.post("/Jack_Jones",  (req, res) => {
       console.log(data)
       res.send(data);
    })()
-      .catch((err) => res.sendStatus(err))
+      .catch((err) => res.send(err))
       
 });
 

@@ -42,7 +42,7 @@ Calvin_api.post("/Calvin",  (req, res) => {
       data.size = Array.from(new Set(sizes));
       res.send(data);
    })()
-      .catch((err) => res.sendStatus(500))
+      .catch((err) => res.send(err))
       
 });
 

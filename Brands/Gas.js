@@ -36,7 +36,7 @@ Gas_api.post("/Gas",  (req, res) => {
       console.log(data)
       res.send(data);
    })()
-      .catch((err) => res.sendStatus(500))
+      .catch((err) => res.send(err))
      
 });
 

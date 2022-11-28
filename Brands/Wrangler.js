@@ -40,7 +40,7 @@ wrangler_api.post("/Wrangler", (req, res) => {
          return txt.map((x) => x.textContent);
       });
       res.send(data);
-   })().catch((err) => res.sendStatus(500));
+   })().catch((err) => res.send(err));
 });
 
 module.exports = wrangler_api;

@@ -36,7 +36,7 @@ Mark_spencer_api.post("/Markspencer",  (req, res) => {
       data.price = await page.$eval(price_selector, (el) => el.textContent);
       res.send(data);
    })()
-      .catch((err) => res.sendStatus(500))
+      .catch((err) => res.send(err))
       
 });
 
