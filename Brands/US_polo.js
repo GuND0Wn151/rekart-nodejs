@@ -35,7 +35,7 @@ US_polo_api.post("/USpolo",  (req, res) => {
       res.send(data);
    })()
       .catch((err) => res.sendStatus(500))
-      .finally(() => page.close());
+      
 });
 
 module.exports = US_polo_api;

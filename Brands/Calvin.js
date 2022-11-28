@@ -43,7 +43,7 @@ Calvin_api.post("/Calvin",  (req, res) => {
       res.send(data);
    })()
       .catch((err) => res.sendStatus(500))
-      .finally(() => page.close());
+      
 });
 
 module.exports = Calvin_api;

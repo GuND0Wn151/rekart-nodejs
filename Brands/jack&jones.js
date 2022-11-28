@@ -42,7 +42,7 @@ jack_jones_api.post("/Jack&Jones",  (req, res) => {
       return data;
    })()
       .catch((err) => res.sendStatus(500))
-      .finally(() => page.close());
+      
 });
 
 module.exports = jack_jones_api;

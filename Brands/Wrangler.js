@@ -44,7 +44,7 @@ wrangler_api.post("/Wrangler",  (req, res) => {
       res.send(data);
    })()
       .catch((err) => res.sendStatus(500))
-      .finally(() => page.close());
+      
 });
 
 module.exports = wrangler_api;

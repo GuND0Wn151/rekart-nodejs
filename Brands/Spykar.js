@@ -33,7 +33,7 @@ Spykar_api.post("/Spykar", (req, res) => {
       res.send(data);
    })()
       .catch((err) => res.sendStatus(500))
-      .finally(() => page.close());
+      
 });
 
 module.exports = Spykar_api;

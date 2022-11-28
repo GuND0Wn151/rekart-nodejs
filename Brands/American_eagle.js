@@ -37,7 +37,7 @@ American_eagle_api.post("/a-eagle", (req, res) => {
       res.send(data)
    })()
       .catch((err) => res.sendStatus(500))
-      .finally(() => page.close());
+      
 });
 
 module.exports = American_eagle_api;

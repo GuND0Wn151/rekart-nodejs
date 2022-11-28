@@ -37,7 +37,7 @@ Mark_spencer_api.post("/Markspencer",  (req, res) => {
       res.send(data);
    })()
       .catch((err) => res.sendStatus(500))
-      .finally(() => page.close());
+      
 });
 
 module.exports = Mark_spencer_api;
