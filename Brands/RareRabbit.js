@@ -21,7 +21,7 @@ RareRabbit_api.post("/RareRabbit",  (req, res) => {
    let page;
    (async () => {
          var data = {};
-         page = await browserP.newPage();
+         page = await (await browserP).newPage();
          data = {};
          await page.goto(RareRabbit_link+req.body.url);
          await page.waitForSelector(href_selector);
