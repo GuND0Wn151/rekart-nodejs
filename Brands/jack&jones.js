@@ -19,6 +19,7 @@ jack_jones_api.post("/Jack_Jones",  (req, res) => {
       var data = {};
       page = await (await browserP).newPage();
       console.log(jack_jones_link + req.body.url);
+      await page.waitForSelector("html")
       await page.goto(jack_jones_link + req.body.url, {
          waitUntil: "domcontentloaded",
       });
@@ -44,7 +45,7 @@ jack_jones_api.post("/Jack_Jones",  (req, res) => {
       console.log(data)
       res.send(data);
    })()
-      .catch((err) => res.sendStatus(err.message))
+      .catch((err) => res.sendStatus(err))
       
 });
 

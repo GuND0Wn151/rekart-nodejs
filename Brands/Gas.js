@@ -1,13 +1,13 @@
 const Gas_api = require("express").Router();
 const pupeteer = require("puppeteer");
 
-const Gas_url = "https://www.gasjeans.in/";
-const name_selector = "h1.product-title";
+const Gas_url = "https://www.ajio.com/search/?text=";
+const name_selector = "h1.prod-name";
 const price_selector =
-   "#content > div.row.product-info > div.col-sm-5 > ul > li > h2";
-const size_selector = "div > div.radio > label.onhover";
+   "div.prod-sp";
+const size_selector = "div.circle > span";;
 const images_selector =
-   "div > div > div > div.image-grid-container > div > div > span > img";
+   "div.img-container > img";
 const browserP = pupeteer.launch({
    headless: true,
    args: ["--no-sandbox", "--disable-setuid-sandbox"],
@@ -23,7 +23,7 @@ Gas_api.post("/Gas",  (req, res) => {
       data.name = await page.$eval(name_selector, (el) => el.textContent);
       var temp = await page.$$eval(size_selector, (txt) => {
          return txt.map((x) =>
-            x.textContent.replaceAll("\n", "").replaceAll(" ", "")
+            x.textContent
          );
       });
 
