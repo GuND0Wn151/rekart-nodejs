@@ -13,6 +13,7 @@ const United_api = require("./UnitedColors")
 const RareRabbit_api = require("./RareRabbit")
 const Calvin_api = require("./Calvin")
 const Diesel_api = require("./Diesel")
+const H_and_m_api = require("./HandM")
 
 
 const router = require("express").Router()
@@ -32,4 +33,5 @@ router.post("/Gas",Gas_api)
 router.post("/rarerabbit",RareRabbit_api)
 router.post("/Calvin",Calvin_api)
 router.post("/Diesel",Diesel_api)
+router.post("/H_and_M",H_and_m_api)
 module.exports = router
